@@ -4,6 +4,12 @@ import Reveal from "../components/Reveal";
 import { PROJECTS } from "../data/projects";
 import { Page, usePageMeta } from "../components/Layout";
 
+const SHOTS = {
+  "chatbot-for-farmers": "/shots/kisanmitra.jpg",
+  "cochain-ai": "/shots/cochain.jpg",
+  "codexoho-digital": "/shots/faceai.jpg",
+};
+
 export default function ProjectDetail() {
   const { id } = useParams();
   const p = PROJECTS.find((x) => x.id === id);
@@ -66,6 +72,23 @@ export default function ProjectDetail() {
               </span>
             ))}
           </div>
+        </Reveal>
+
+        <Reveal delay={0.12}>
+          <figure
+            data-testid="project-detail-shot"
+            className="mt-12 rounded-[2rem] border border-[#d2d2bc] bg-[#e4e4d0] p-3 shadow-[0_24px_60px_-24px_rgba(26,26,26,0.25)] sm:p-4"
+          >
+            <img
+              src={process.env.PUBLIC_URL + SHOTS[p.id]}
+              alt={`${p.title} product screen`}
+              loading="lazy"
+              className="w-full rounded-2xl object-cover"
+            />
+            <figcaption className="font-mono2 px-2 pb-1 pt-3 text-[10px] uppercase tracking-[0.2em] text-[#666666]">
+              Product screen &mdash; {p.title}
+            </figcaption>
+          </figure>
         </Reveal>
 
         <div className="mt-14 flex flex-col gap-12">

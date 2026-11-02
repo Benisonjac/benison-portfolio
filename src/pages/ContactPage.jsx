@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUpRight, MessageCircle } from "lucide-react";
 import Reveal from "../components/Reveal";
 import { Page, usePageMeta } from "../components/Layout";
 import { RESUME_URL } from "../components/Hero";
@@ -25,72 +25,114 @@ export default function ContactPage() {
     return () => clearInterval(t);
   }, []);
 
+  const CHANNELS = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "benisonjac@gmail.com",
+      href: "mailto:benisonjac@gmail.com",
+      testid: "contact-email-link",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      value: "in/Benison-Jacob-Benny",
+      href: "https://linkedin.com/in/Benison-Jacob-Benny",
+      testid: "contact-linkedin-link",
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      value: "github.com/Benisonjac",
+      href: "https://github.com/Benisonjac",
+      testid: "contact-github-link",
+    },
+  ];
+
   return (
     <Page>
-      <section data-testid="contact-section" className="bg-[#034f46] text-[#ffffeb]">
-        <div className="mx-auto max-w-4xl px-5 pb-24 pt-28 sm:px-8 sm:pt-36">
+      <section data-testid="contact-section" className="bg-[#ffffeb]">
+        <div className="mx-auto max-w-5xl px-5 pb-24 pt-28 sm:px-8 sm:pt-36">
           <Reveal>
-            <p className="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#f0d7ff] sm:text-xs">
+            <p className="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#666666] sm:text-xs">
               Contact
             </p>
-            <h1 className="font-display mt-6 text-4xl leading-tight tracking-tight sm:text-5xl lg:text-6xl">
+            <h1 className="font-display mt-4 max-w-2xl text-4xl leading-tight tracking-tight text-[#1a1a1a] sm:text-5xl lg:text-6xl">
               I'd love to hear from you.
             </h1>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#666666] sm:text-lg">
+              Pick whichever way is easiest for you &mdash; I read all of them.
+            </p>
           </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="mt-12 flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-8">
-              <a
-                href="mailto:benisonjac@gmail.com"
-                data-testid="contact-email-link"
-                className="inline-flex items-center gap-2.5 text-lg text-[#f0d7ff] underline-offset-4 transition-colors duration-300 hover:text-[#ffffeb] hover:underline sm:text-xl"
-              >
-                <Mail className="h-5 w-5" />
-                benisonjac@gmail.com
-              </a>
-              <a
-                href="https://linkedin.com/in/Benison-Jacob-Benny"
-                target="_blank"
-                rel="noreferrer"
-                data-testid="contact-linkedin-link"
-                className="inline-flex items-center gap-2.5 text-lg text-[#f0d7ff] underline-offset-4 transition-colors duration-300 hover:text-[#ffffeb] hover:underline sm:text-xl"
-              >
-                <Linkedin className="h-5 w-5" />
-                linkedin.com/in/Benison-Jacob-Benny
-              </a>
-              <a
-                href="https://github.com/Benisonjac"
-                target="_blank"
-                rel="noreferrer"
-                data-testid="contact-github-link"
-                className="inline-flex items-center gap-2.5 text-lg text-[#f0d7ff] underline-offset-4 transition-colors duration-300 hover:text-[#ffffeb] hover:underline sm:text-xl"
-              >
-                <Github className="h-5 w-5" />
-                github.com/Benisonjac
-              </a>
-            </div>
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noreferrer"
-              data-testid="contact-download-resume-button"
-              className="mt-10 inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#f0d7ff] px-8 py-3.5 text-sm font-medium text-[#1a1a1a] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
-            >
-              Download resume
-              <ArrowUpRight className="ml-1.5 h-4 w-4" />
-            </a>
-          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+            {CHANNELS.map((c, i) => (
+              <Reveal key={c.label} delay={i * 0.07} className="h-full">
+                <a
+                  href={c.href}
+                  target={c.href.startsWith("mailto") ? undefined : "_blank"}
+                  rel="noreferrer"
+                  data-testid={c.testid}
+                  className="flex h-full flex-col rounded-3xl border border-[#d2d2bc] bg-[#e4e4d0] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(26,26,26,0.08)] sm:p-7"
+                >
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-[#034f46] text-[#f0d7ff]">
+                    <c.icon className="h-5 w-5" />
+                  </span>
+                  <p className="font-mono2 mt-6 text-[10px] uppercase tracking-[0.2em] text-[#666666]">
+                    {c.label}
+                  </p>
+                  <p className="mt-1.5 break-words text-sm font-medium text-[#1a1a1a] sm:text-base">
+                    {c.value}
+                  </p>
+                </a>
+              </Reveal>
+            ))}
+          </div>
 
-          <p
-            className="font-mono2 mt-20 text-xs uppercase tracking-[0.2em] text-[#f0d7ff]/70"
-            data-testid="contact-local-time"
-          >
-            Bengaluru &middot; {time} IST
-          </p>
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-[#ffffeb]/60">
-            Prefer asking instead of reading? My assistant at the bottom right
-            knows this site and answers in my voice.
-          </p>
+          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <Reveal delay={0.1} className="h-full">
+              <div className="flex h-full flex-col justify-between rounded-3xl bg-[#034f46] p-6 text-[#ffffeb] sm:p-8">
+                <div>
+                  <p className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#f0d7ff]">
+                    Resume
+                  </p>
+                  <p className="font-display mt-3 text-2xl leading-snug">
+                    One page, PDF — the short version of this site.
+                  </p>
+                </div>
+                <a
+                  href={RESUME_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid="contact-download-resume-button"
+                  className="mt-8 inline-flex min-h-[48px] w-fit items-center justify-center rounded-full bg-[#f0d7ff] px-6 py-3 text-sm font-medium text-[#1a1a1a] transition-colors duration-300 hover:bg-[#e2beff]"
+                >
+                  Download resume
+                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                </a>
+              </div>
+            </Reveal>
+            <Reveal delay={0.15} className="h-full">
+              <div className="flex h-full flex-col justify-between rounded-3xl border border-[#d2d2bc] bg-[#e4e4d0] p-6 sm:p-8">
+                <div>
+                  <p className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#666666]">
+                    Local time
+                  </p>
+                  <p
+                    className="font-display mt-3 text-2xl text-[#034f46]"
+                    data-testid="contact-local-time"
+                  >
+                    Bengaluru &middot; {time} IST
+                  </p>
+                </div>
+                <p className="mt-8 flex items-start gap-2.5 text-sm leading-relaxed text-[#666666]">
+                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#034f46]" />
+                  Prefer asking? My assistant at the bottom right knows this
+                  site.
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
     </Page>
