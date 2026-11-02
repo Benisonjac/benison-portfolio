@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Reveal, { ease } from "./Reveal";
 
 const BARS = [
@@ -37,6 +38,16 @@ export default function Research() {
               combining models into an ensemble reduced the error by a further
               28%.
             </p>
+            <a
+              href="https://www.scopus.com/authid/detail.uri?authorId=60525452900"
+              target="_blank"
+              rel="noreferrer"
+              data-testid="research-scopus-link"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f0d7ff] px-6 py-3 text-sm font-medium text-[#1a1a1a] shadow-[0_2px_12px_rgba(26,26,26,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
+            >
+              View on Scopus
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </Reveal>
         </div>
 
