@@ -1,18 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FileText, TrendingDown, Layers, Mic } from "lucide-react";
 import { ease } from "./Reveal";
 
 export const RESUME_URL =
   "https://drive.google.com/uc?export=download&id=1XUxZZgJRkCIwna_sCStLr9bl7CX6Dm2I";
 
 const LINES = ["MSc Data Science student,", "applying to intern at", "Wispr Flow."];
-
-const CHIPS = [
-  { Icon: FileText, label: "IEEE ICMNWC-2025, Scopus indexed" },
-  { Icon: TrendingDown, label: "1.90% MAPE vs 13.58% for ARIMA" },
-  { Icon: Layers, label: "28% error reduction with ensembles" },
-];
 
 const BARS = Array.from({ length: 26 }, (_, i) => 20 + ((i * 37) % 80));
 
@@ -102,23 +95,6 @@ export default function Hero() {
               Download resume
             </a>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9, ease }}
-            className="mt-9 flex flex-wrap gap-2.5"
-          >
-            {CHIPS.map(({ Icon, label }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-2 rounded-full border border-[#d2d2bc] bg-[#e4e4d0] px-4 py-2 text-xs text-[#1a1a1a] sm:text-[13px]"
-              >
-                <Icon className="h-3.5 w-3.5 text-[#034f46]" />
-                {label}
-              </span>
-            ))}
-          </motion.div>
         </div>
 
         <motion.div style={{ y: yPanel }} className="relative mt-2 lg:mt-0">
@@ -144,10 +120,6 @@ export default function Hero() {
               ))}
             </div>
             <div className="mt-8 h-px w-full bg-[#ffffeb]/15" />
-            <div className="mt-6 flex items-center gap-3">
-              <Mic className="h-5 w-5 text-[#f0d7ff]/80" />
-              <span className="h-px w-10 bg-[#f0d7ff]/40" />
-            </div>
           </div>
         </motion.div>
       </div>

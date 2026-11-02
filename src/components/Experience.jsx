@@ -6,7 +6,7 @@ const JOBS = [
     org: "CodeXOHO Digital",
     place: "Bengaluru",
     dates: "Feb \u2013 Apr 2026",
-    desc: "Built FastAPI and PostgreSQL backend services for an enterprise client: designed the REST APIs that the frontend and reporting tools depended on, debugged a computer vision pipeline for facial recognition and activity monitoring, and containerized the services with Docker so they ran the same way everywhere.",
+    desc: "Built FastAPI and PostgreSQL backend services for an enterprise client handling over 45,000 records a month. Designed the REST APIs that the frontend and reporting tools both depended on, debugged a computer vision pipeline for facial recognition and activity monitoring, and containerized the services with Docker so they behaved the same in every environment. Requirements weren't fully defined at the start and kept shifting, so a good part of the work was deciding what to build and what to leave out.",
   },
   {
     role: "Junior Research Analyst Intern",
