@@ -27,9 +27,9 @@ const PROJECTS = [
   },
   {
     id: "codexoho-digital",
-    title: "Enterprise backend at CodeXOHO Digital",
-    tag: "FastAPI \u00B7 PostgreSQL \u00B7 Docker",
-    built: "FastAPI and PostgreSQL services handling about 37,800 records a month for an enterprise client, containerized with Docker.",
+    title: "Face AI",
+    tag: "Computer vision backend \u00B7 FastAPI \u00B7 PostgreSQL \u00B7 Docker",
+    built: "FastAPI and PostgreSQL services for an enterprise client, handling over 45,000 records a month and containerized with Docker.",
     surprised:
       "The requirements weren't fully defined at the start and kept shifting, so a lot of the work was deciding what to build and what to leave out.",
     learned:

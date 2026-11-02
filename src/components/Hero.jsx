@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FileText, TrendingDown, Layers } from "lucide-react";
+import { FileText, TrendingDown, Layers, Mic } from "lucide-react";
 import { ease } from "./Reveal";
 
 export const RESUME_URL =
@@ -72,8 +72,10 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6, ease }}
             className="mt-7 max-w-xl text-base leading-relaxed text-[#666666] sm:text-lg"
           >
-            I'm learning to build RAG and LLM projects, and I like testing whether a
-            model's answers can be trusted.
+            I build RAG and LLM projects, and I like testing whether a model's
+            answers can be trusted before I use them. My work so far spans an
+            agriculture chatbot, crop-price forecasting, and backend systems that
+            other tools depend on.
           </motion.p>
 
           <motion.div
@@ -86,7 +88,7 @@ export default function Hero() {
               href="#projects"
               onClick={scrollToWork}
               data-testid="see-my-work-button"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#f0d7ff] px-7 py-3 text-sm font-medium text-[#1a1a1a] shadow-[0_2px_12px_rgba(26,26,26,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#f0d7ff] px-7 py-3 text-sm font-medium text-[#1a1a1a] shadow-[0_2px_12px_rgba(26,26,26,0.06)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
             >
               See my work
             </a>
@@ -95,7 +97,7 @@ export default function Hero() {
               target="_blank"
               rel="noreferrer"
               data-testid="download-resume-button"
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#f0d7ff] px-7 py-3 text-sm font-medium text-[#1a1a1a] shadow-[0_2px_12px_rgba(26,26,26,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#f0d7ff] px-7 py-3 text-sm font-medium text-[#1a1a1a] shadow-[0_2px_12px_rgba(26,26,26,0.06)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
             >
               Download resume
             </a>
@@ -125,12 +127,12 @@ export default function Hero() {
             className="absolute -right-10 -top-14 h-64 w-64 rounded-full bg-[#f0d7ff] opacity-60 blur-3xl"
           />
           <div className="relative rounded-[2rem] bg-[#034f46] p-8 shadow-[0_24px_60px_-20px_rgba(3,79,70,0.45)] sm:p-10">
-            <div className="flex h-44 items-center gap-[6px] sm:h-56 sm:gap-2">
+            <div className="flex aspect-[16/10] max-h-[26rem] w-full items-center gap-[6px] sm:gap-2">
               {BARS.map((h, i) => (
                 <span
                   key={i}
                   className={
-                    "wave-bar w-1.5 rounded-full sm:w-2 " +
+                    "wave-bar w-1.5 flex-1 rounded-full sm:w-2 " +
                     (i % 7 === 3 ? "bg-[#f0d7ff]" : "bg-[#ffffeb]/85")
                   }
                   style={{
@@ -142,10 +144,9 @@ export default function Hero() {
               ))}
             </div>
             <div className="mt-8 h-px w-full bg-[#ffffeb]/15" />
-            <div className="mt-6 flex gap-2">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#f0d7ff]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ffffeb]/40" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ffffeb]/20" />
+            <div className="mt-6 flex items-center gap-3">
+              <Mic className="h-5 w-5 text-[#f0d7ff]/80" />
+              <span className="h-px w-10 bg-[#f0d7ff]/40" />
             </div>
           </div>
         </motion.div>

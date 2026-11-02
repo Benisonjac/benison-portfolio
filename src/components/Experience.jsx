@@ -6,14 +6,14 @@ const JOBS = [
     org: "CodeXOHO Digital",
     place: "Bengaluru",
     dates: "Feb \u2013 Apr 2026",
-    desc: "Built FastAPI and PostgreSQL backend services for an enterprise client, debugged a computer vision pipeline for facial recognition and activity monitoring, and containerized services with Docker.",
+    desc: "Built FastAPI and PostgreSQL backend services for an enterprise client: designed the REST APIs that the frontend and reporting tools depended on, debugged a computer vision pipeline for facial recognition and activity monitoring, and containerized the services with Docker so they ran the same way everywhere.",
   },
   {
     role: "Junior Research Analyst Intern",
     org: "Hedge Equities",
     place: "Kochi",
     dates: "Jun \u2013 Jul 2022",
-    desc: "Analyzed financial markets with incomplete, changing data.",
+    desc: "Analyzed financial markets with incomplete, changing data, and learned to work carefully when the numbers kept moving, being clear about what could and couldn't be concluded.",
   },
 ];
 
