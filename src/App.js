@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
+import ScrollProgress from "./components/ScrollProgress";
 import Hero from "./components/Hero";
 import Marquee from "./components/Marquee";
 import WhyWispr from "./components/WhyWispr";
@@ -8,6 +9,7 @@ import Research from "./components/Research";
 import Experience from "./components/Experience";
 import FlowNotes from "./components/FlowNotes";
 import BuiltByVoice from "./components/BuiltByVoice";
+import AssistantTeaser from "./components/AssistantTeaser";
 import Contact from "./components/Contact";
 import ChatWidget from "./components/ChatWidget";
 
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <main className="bg-[#ffffeb] text-[#1a1a1a] antialiased">
+      <ScrollProgress />
       <Hero />
       <Marquee />
       <WhyWispr />
@@ -39,6 +42,7 @@ function App() {
       <Experience />
       <FlowNotes />
       <BuiltByVoice />
+      <AssistantTeaser />
       <Contact />
       <ChatWidget />
     </main>

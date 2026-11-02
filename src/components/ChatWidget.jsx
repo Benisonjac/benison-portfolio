@@ -18,6 +18,12 @@ export default function ChatWidget() {
   const listRef = useRef(null);
 
   useEffect(() => {
+    const openChat = () => setOpen(true);
+    window.addEventListener("open-chat", openChat);
+    return () => window.removeEventListener("open-chat", openChat);
+  }, []);
+
+  useEffect(() => {
     listRef.current?.scrollTo({
       top: listRef.current.scrollHeight,
       behavior: "smooth",

@@ -26,10 +26,12 @@ export default function Experience() {
             Experience
           </p>
         </Reveal>
-        <div className="mt-10 flex flex-col gap-12">
+        <div className="relative mt-10 flex flex-col gap-14">
+          <span className="absolute bottom-2 left-[5px] top-2 w-px bg-[#034f46]/25" />
           {JOBS.map((j, i) => (
             <Reveal key={j.role} delay={i * 0.08}>
-              <div className="border-l-2 border-[#034f46]/25 pl-6 sm:pl-8">
+              <div className="relative pl-8 sm:pl-10">
+                <span className="absolute left-0 top-2.5 h-[11px] w-[11px] rounded-full bg-[#034f46] ring-4 ring-[#e4e4d0]" />
                 <h3 className="font-display text-2xl leading-snug text-[#1a1a1a] sm:text-3xl">
                   {j.role}
                 </h3>

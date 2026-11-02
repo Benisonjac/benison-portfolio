@@ -62,8 +62,11 @@ export default function Projects() {
             <Reveal key={p.id} delay={idx * 0.1} className="h-full">
               <article
                 data-testid={`project-card-${p.id}`}
-                className="flex h-full flex-col rounded-3xl border border-[#d2d2bc] bg-[#e4e4d0] p-7 shadow-[0_4px_20px_rgba(26,26,26,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(26,26,26,0.08)] sm:p-8"
+                className="relative flex h-full flex-col rounded-3xl border border-[#d2d2bc] bg-[#e4e4d0] p-7 shadow-[0_4px_20px_rgba(26,26,26,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_30px_rgba(26,26,26,0.08)] sm:p-8"
               >
+                <span className="font-display pointer-events-none absolute right-6 top-5 text-5xl italic text-[#034f46]/10 sm:text-6xl">
+                  0{idx + 1}
+                </span>
                 <div className="flex items-start justify-between gap-3">
                   <h3 className="font-display text-2xl leading-snug text-[#1a1a1a]">
                     {p.title}

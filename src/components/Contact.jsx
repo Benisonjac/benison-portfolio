@@ -1,8 +1,25 @@
+import { useEffect, useState } from "react";
 import { Mail, Linkedin, ArrowUpRight, ArrowUp } from "lucide-react";
 import Reveal from "./Reveal";
 import { RESUME_URL } from "./Hero";
 
 export default function Contact() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Date().toLocaleTimeString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      );
+    tick();
+    const t = setInterval(tick, 30000);
+    return () => clearInterval(t);
+  }, []);
+
   return (
     <section id="contact" data-testid="contact-section" className="bg-[#034f46] text-[#ffffeb]">
       <div className="mx-auto max-w-4xl px-5 pb-16 pt-20 sm:px-8 sm:pb-20 sm:pt-28 lg:pt-32">
@@ -48,7 +65,14 @@ export default function Contact() {
           </a>
         </Reveal>
 
-        <div className="mt-24 flex items-center justify-between gap-4">
+        <p
+          className="font-mono2 mt-20 text-xs uppercase tracking-[0.2em] text-[#f0d7ff]/70"
+          data-testid="contact-local-time"
+        >
+          Bengaluru &middot; {time} IST
+        </p>
+
+        <div className="mt-4 flex items-center justify-between gap-4">
           <p className="text-xs leading-relaxed text-[#ffffeb]/45">
             A personal portfolio by Benison Jacob Benny. Not affiliated with or
             endorsed by Wispr Flow.
