@@ -52,7 +52,7 @@ export default function About() {
             </p>
             <p className="mt-5 text-base leading-relaxed text-[#666666] sm:text-lg">
               I'm applying to intern at Wispr Flow because I want to learn how a
-              real product team works \u2014 and because I think voice tools
+              real product team works &mdash; and because I think voice tools
               should work for everyone.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">

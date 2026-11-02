@@ -22,7 +22,7 @@ export default function ResearchPage() {
               What the Diebold-Mariano test adds
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[#666666] sm:text-lg">
-              Two models can trade wins on a leaderboard out of luck. A
+              Two models can trade wins on a leaderboard by luck alone. A
               Diebold-Mariano test checks whether one model's errors are smaller
               in a way that statistics actually supports. It's how the 1.90%
               against 13.58% stops being a claim and starts being a result.

@@ -1,29 +1,13 @@
-import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail, ArrowUpRight, MessageCircle } from "lucide-react";
+import { Github, Linkedin, Mail, MessageCircle, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import { Page, usePageMeta } from "../components/Layout";
 import { RESUME_URL } from "../components/Hero";
 
 export default function ContactPage() {
-  const [time, setTime] = useState("");
   usePageMeta(
     "Contact \u2014 Benison Jacob Benny",
     "Get in touch with Benison Jacob Benny: email, LinkedIn, GitHub, and resume.",
   );
-
-  useEffect(() => {
-    const tick = () =>
-      setTime(
-        new Date().toLocaleTimeString("en-IN", {
-          timeZone: "Asia/Kolkata",
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      );
-    tick();
-    const t = setInterval(tick, 30000);
-    return () => clearInterval(t);
-  }, []);
 
   const CHANNELS = [
     {
@@ -89,50 +73,35 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
-            <Reveal delay={0.1} className="h-full">
-              <div className="flex h-full flex-col justify-between rounded-3xl bg-[#034f46] p-6 text-[#ffffeb] sm:p-8">
-                <div>
-                  <p className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#f0d7ff]">
-                    Resume
-                  </p>
-                  <p className="font-display mt-3 text-2xl leading-snug">
-                    One page, PDF — the short version of this site.
-                  </p>
-                </div>
-                <a
-                  href={RESUME_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-testid="contact-download-resume-button"
-                  className="mt-8 inline-flex min-h-[48px] w-fit items-center justify-center rounded-full bg-[#f0d7ff] px-6 py-3 text-sm font-medium text-[#1a1a1a] transition-colors duration-300 hover:bg-[#e2beff]"
-                >
-                  Download resume
-                  <ArrowUpRight className="ml-1.5 h-4 w-4" />
-                </a>
-              </div>
-            </Reveal>
-            <Reveal delay={0.15} className="h-full">
-              <div className="flex h-full flex-col justify-between rounded-3xl border border-[#d2d2bc] bg-[#e4e4d0] p-6 sm:p-8">
-                <div>
-                  <p className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#666666]">
-                    Local time
-                  </p>
-                  <p
-                    className="font-display mt-3 text-2xl text-[#034f46]"
-                    data-testid="contact-local-time"
-                  >
-                    Bengaluru &middot; {time} IST
-                  </p>
-                </div>
-                <p className="mt-8 flex items-start gap-2.5 text-sm leading-relaxed text-[#666666]">
-                  <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#034f46]" />
-                  Prefer asking? My assistant at the bottom right knows this
-                  site.
+          <Reveal delay={0.1}>
+            <div className="mt-5 flex flex-col justify-between gap-6 rounded-3xl bg-[#034f46] p-6 text-[#ffffeb] sm:flex-row sm:items-center sm:p-8">
+              <div>
+                <p className="font-mono2 text-[10px] uppercase tracking-[0.2em] text-[#f0d7ff]">
+                  Resume
+                </p>
+                <p className="font-display mt-3 max-w-md text-2xl leading-snug">
+                  One page, PDF &mdash; the short version of this site.
                 </p>
               </div>
-            </Reveal>
-          </div>
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                rel="noreferrer"
+                data-testid="contact-download-resume-button"
+                className="inline-flex min-h-[48px] shrink-0 items-center justify-center rounded-full bg-[#f0d7ff] px-6 py-3 text-sm font-medium text-[#1a1a1a] transition-colors duration-300 hover:bg-[#e2beff]"
+              >
+                Download resume
+                <ArrowUpRight className="ml-1.5 h-4 w-4" />
+              </a>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15}>
+            <p className="mt-8 flex items-start gap-2.5 text-sm leading-relaxed text-[#666666]">
+              <MessageCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#034f46]" />
+              Prefer asking? My assistant at the bottom right knows this site.
+            </p>
+          </Reveal>
         </div>
       </section>
     </Page>

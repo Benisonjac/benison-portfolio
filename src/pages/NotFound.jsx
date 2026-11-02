@@ -12,7 +12,7 @@ export default function NotFound() {
       >
         <p className="font-display text-7xl italic text-[#034f46] sm:text-8xl">404</p>
         <p className="mt-5 max-w-sm text-base leading-relaxed text-[#666666]">
-          This page doesn't exist \u2014 but the rest of the site does.
+          This page doesn't exist &mdash; but the rest of the site does.
         </p>
         <Link
           to="/"
