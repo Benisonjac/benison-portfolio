@@ -51,6 +51,12 @@ async def root():
     return {"message": "Portfolio backend running"}
 
 
+@app.get("/health")
+@app.get("/api/health")
+async def health():
+    return {"status": "ok"}
+
+
 @app.post("/api/chat")
 async def chat(req: ChatRequest):
     api_key = os.environ.get("EMERGENT_LLM_KEY")
