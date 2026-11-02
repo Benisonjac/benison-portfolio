@@ -1,42 +1,7 @@
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
-
-const PROJECTS = [
-  {
-    id: "chatbot-for-farmers",
-    title: "Chatbot for Farmers",
-    tag: "RAG \u00B7 FAISS \u00B7 LangChain \u00B7 ARIMA / SARIMA",
-    built: "A RAG pipeline built from scratch that chunked and embedded unstructured government PDFs, indexed them with FAISS, and used LangChain to connect retrieval to an LLM, plus ARIMA and SARIMA forecasting for seasonal crop prices.",
-    surprised:
-      "How messy real government documents were. Formatting changed from page to page, and tables rarely sat where they should.",
-    learned:
-      "How retrieval quality limits what the chatbot can say. If the right passage isn't retrieved, the model can't fix the answer.",
-    result: "A working pipeline that combines document retrieval with crop price forecasting.",
-  },
-  {
-    id: "cochain-ai",
-    title: "CoChain.ai",
-    tag: "Vector search \u00B7 A/B testing",
-    link: { label: "Try it live", url: "https://cochain-ai.onrender.com" },
-    built: "A platform that helps developers and idea people find collaborators with similar goals, so they can team up instead of working alone. A bit like LinkedIn and GitHub combined, with an A/B testing framework that uses significance testing and automatic winner detection.",
-    surprised:
-      "It was the first project where I started from my own idea and built it end to end. I wasn't sure whether anything like it existed, and finding that out along the way was part of the learning.",
-    learned:
-      "The more I grow, the more I can help others. Building CoChain.ai pushed me to learn new tools like vector search, and I realized that improving myself is the best way I know to make things better for the people I build for.",
-    result: "SQL and FAISS vector search queries optimized to return in under 5 seconds.",
-  },
-  {
-    id: "codexoho-digital",
-    title: "Face AI",
-    tag: "Computer vision backend \u00B7 FastAPI \u00B7 PostgreSQL \u00B7 Docker",
-    built: "A computer vision project on attendance management for an enterprise client: FastAPI and PostgreSQL services built around face recognition, with every service containerized using Docker.",
-    surprised:
-      "The requirements weren't fully defined at the start and kept shifting, so a lot of the work was deciding what to build and what to leave out.",
-    learned:
-      "How to make sensible trade-offs when things change, and to ask what the business actually needs, not only what a benchmark shows.",
-    result: "REST APIs that the frontend and reporting tools both relied on.",
-  },
-];
+import { PROJECTS } from "../data/projects";
 
 const BLOCKS = [
   ["What I built", "built"],
@@ -107,6 +72,14 @@ export default function Projects() {
                       {p.result}
                     </p>
                   </div>
+                  <Link
+                    to={`/projects/${p.id}`}
+                    data-testid={`project-detail-link-${p.id}`}
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#034f46] transition-all duration-300 hover:gap-2.5"
+                  >
+                    Read the full case study
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </article>
             </Reveal>

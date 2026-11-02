@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ease } from "./Reveal";
 
 export const RESUME_URL =
@@ -36,15 +37,9 @@ export default function Hero() {
     });
   };
 
-  const scrollToWork = (e) => {
-    e.preventDefault();
-    if (window.__lenis) window.__lenis.scrollTo("#projects", { offset: -24 });
-    else document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <header ref={ref} data-testid="hero-section" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-5 pb-16 pt-16 sm:px-8 sm:pt-24 sm:pb-24 lg:min-h-[92vh] lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-5 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-32 lg:min-h-[92vh] lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         <div>
           <motion.img
             src={process.env.PUBLIC_URL + "/portrait.jpg"}
@@ -104,14 +99,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.75, ease }}
             className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4"
           >
-            <a
-              href="#projects"
-              onClick={scrollToWork}
+            <Link
+              to="/projects"
               data-testid="see-my-work-button"
               className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-[#f0d7ff] px-7 py-3 text-sm font-medium text-[#1a1a1a] shadow-[0_2px_12px_rgba(26,26,26,0.06)] transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-[#e2beff]"
             >
               See my work
-            </a>
+            </Link>
             <a
               href={RESUME_URL}
               target="_blank"

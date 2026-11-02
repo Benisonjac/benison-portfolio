@@ -1,17 +1,36 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
-import ScrollProgress from "./components/ScrollProgress";
-import Hero from "./components/Hero";
-import Marquee from "./components/Marquee";
-import WhyWispr from "./components/WhyWispr";
-import Projects from "./components/Projects";
-import Research from "./components/Research";
-import Experience from "./components/Experience";
-import FlowNotes from "./components/FlowNotes";
-import BuiltByVoice from "./components/BuiltByVoice";
-import AssistantTeaser from "./components/AssistantTeaser";
-import Contact from "./components/Contact";
-import ChatWidget from "./components/ChatWidget";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import ProjectDetail from "./pages/ProjectDetail";
+import ResearchPage from "./pages/ResearchPage";
+import VoiceLab from "./pages/VoiceLab";
+import About from "./pages/About";
+import ContactPage from "./pages/ContactPage";
+import NotFound from "./pages/NotFound";
+
+function AnimatedRoutes() {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:id" element={<ProjectDetail />} />
+          <Route path="/research" element={<ResearchPage />} />
+          <Route path="/voice-lab" element={<VoiceLab />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   useEffect(() => {
@@ -32,20 +51,9 @@ function App() {
   }, []);
 
   return (
-    <main className="bg-[#ffffeb] text-[#1a1a1a] antialiased">
-      <ScrollProgress />
-      <Hero />
-      <Marquee />
-      <WhyWispr />
-      <Projects />
-      <Research />
-      <Experience />
-      <FlowNotes />
-      <BuiltByVoice />
-      <AssistantTeaser />
-      <Contact />
-      <ChatWidget />
-    </main>
+    <BrowserRouter>
+      <AnimatedRoutes />
+    </BrowserRouter>
   );
 }
 
