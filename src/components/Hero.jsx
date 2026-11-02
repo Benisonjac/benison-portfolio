@@ -17,6 +17,24 @@ export default function Hero() {
   });
   const yPanel = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const yGlow = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const barRefs = useRef([]);
+
+  const handleMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const cx = e.clientX - rect.left;
+    barRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const center = el.offsetLeft + el.offsetWidth / 2;
+      const boost = 1 + 0.5 * Math.exp(-Math.pow(center - cx, 2) / 5000);
+      el.style.height = `${Math.min(100, BARS[i] * boost)}%`;
+    });
+  };
+
+  const handleLeave = () => {
+    barRefs.current.forEach((el, i) => {
+      if (el) el.style.height = `${BARS[i]}%`;
+    });
+  };
 
   const scrollToWork = (e) => {
     e.preventDefault();
@@ -112,12 +130,18 @@ export default function Hero() {
             className="absolute -right-10 -top-14 h-64 w-64 rounded-full bg-[#f0d7ff] opacity-60 blur-3xl"
           />
           <div className="relative rounded-[2rem] bg-[#034f46] p-8 shadow-[0_24px_60px_-20px_rgba(3,79,70,0.45)] sm:p-10">
-            <div className="flex aspect-[16/10] max-h-[26rem] w-full items-center gap-[6px] sm:gap-2">
+            <div
+              className="flex h-44 w-full cursor-pointer items-center gap-[6px] sm:h-56 sm:gap-2"
+              onMouseMove={handleMove}
+              onMouseLeave={handleLeave}
+              data-testid="hero-wave-panel"
+            >
               {BARS.map((h, i) => (
                 <span
                   key={i}
+                  ref={(el) => (barRefs.current[i] = el)}
                   className={
-                    "wave-bar w-1.5 flex-1 rounded-full sm:w-2 " +
+                    "wave-bar w-1.5 flex-1 rounded-full transition-[height] duration-150 ease-out sm:w-2 " +
                     (i % 7 === 3 ? "bg-[#f0d7ff]" : "bg-[#ffffeb]/85")
                   }
                   style={{

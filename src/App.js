@@ -9,6 +9,7 @@ import Experience from "./components/Experience";
 import FlowNotes from "./components/FlowNotes";
 import BuiltByVoice from "./components/BuiltByVoice";
 import Contact from "./components/Contact";
+import ChatWidget from "./components/ChatWidget";
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
       <FlowNotes />
       <BuiltByVoice />
       <Contact />
+      <ChatWidget />
     </main>
   );
 }
