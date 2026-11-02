@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #ffffeb;
+  --card: #e4e4d0;
+  --ink: #1a1a1a;
+  --muted: #666666;
+  --green: #034f46;
+  --lavender: #f0d7ff;
+  --line: #d2d2bc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+}
+
+.font-mono2 {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+::selection {
+  background: var(--lavender);
+  color: var(--ink);
+}
+
+.wave-bar {
+  transform-origin: center;
+  animation: wave 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.35); }
+  25% { transform: scaleY(1); }
+  55% { transform: scaleY(0.5); }
+  80% { transform: scaleY(0.85); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 52s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .wave-bar { animation: none; transform: scaleY(0.7); }
+  .marquee-track { animation: none; }
+}
