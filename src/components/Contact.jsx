@@ -1,4 +1,4 @@
-import { Mail, Linkedin, ArrowUpRight } from "lucide-react";
+import { Mail, Linkedin, ArrowUpRight, ArrowUp } from "lucide-react";
 import Reveal from "./Reveal";
 import { RESUME_URL } from "./Hero";
 
@@ -48,10 +48,24 @@ export default function Contact() {
           </a>
         </Reveal>
 
-        <p className="mt-24 text-xs leading-relaxed text-[#ffffeb]/45">
-          A personal portfolio by Benison Jacob Benny. Not affiliated with or
-          endorsed by Wispr Flow.
-        </p>
+        <div className="mt-24 flex items-center justify-between gap-4">
+          <p className="text-xs leading-relaxed text-[#ffffeb]/45">
+            A personal portfolio by Benison Jacob Benny. Not affiliated with or
+            endorsed by Wispr Flow.
+          </p>
+          <button
+            onClick={() =>
+              window.__lenis
+                ? window.__lenis.scrollTo(0)
+                : window.scrollTo({ top: 0, behavior: "smooth" })
+            }
+            data-testid="back-to-top-button"
+            className="inline-flex shrink-0 items-center gap-1.5 text-xs text-[#ffffeb]/60 transition-colors duration-300 hover:text-[#f0d7ff]"
+          >
+            Back to top
+            <ArrowUp className="h-3.5 w-3.5" />
+          </button>
+        </div>
       </div>
     </section>
   );

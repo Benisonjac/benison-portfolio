@@ -28,11 +28,20 @@ export default function Hero() {
     <header ref={ref} data-testid="hero-section" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-5 pb-16 pt-16 sm:px-8 sm:pt-24 sm:pb-24 lg:min-h-[92vh] lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         <div>
+          <motion.img
+            src={process.env.PUBLIC_URL + "/portrait.jpg"}
+            alt="Portrait of Benison Jacob Benny"
+            data-testid="hero-portrait"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease }}
+            className="h-16 w-16 rounded-full object-cover shadow-[0_4px_16px_rgba(26,26,26,0.12)] ring-2 ring-[#f0d7ff] sm:h-20 sm:w-20"
+          />
           <motion.p
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease }}
-            className="font-mono2 text-[11px] uppercase tracking-[0.25em] text-[#666666] sm:text-xs"
+            transition={{ duration: 0.7, delay: 0.1, ease }}
+            className="font-mono2 mt-5 text-[11px] uppercase tracking-[0.25em] text-[#666666] sm:text-xs"
             data-testid="hero-eyebrow"
           >
             Benison Jacob Benny &middot; Bengaluru
